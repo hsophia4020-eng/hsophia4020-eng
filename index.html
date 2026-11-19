@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>M 的個人網站</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="logo" href="index.html" aria-label="回到首頁">
+      <img src="img/logo.png" alt="M 標誌">
+    </a>
+
+    <nav class="main-nav" aria-label="主選單">
+      <ul>
+        <li><a href="index.html">首頁</a></li>
+        <li><a href="news.html">最新資訊</a></li>
+        <li><a href="works.html">作品</a></li>
+        <li><a href="commission.html">委託</a></li>
+        <li><a href="about.html">關於我</a></li>
+      </ul>
+    </nav>
+
+    <ul class="tools">
+      <li><a href="#" aria-label="設定"><img src="img/icon-settings.png" alt="設定"></a></li>
+      <li><a href="#" aria-label="搜尋"><img src="img/icon-search.png" alt="搜尋"></a></li>
+      <li><a href="index.html" aria-label="首頁"><img src="img/icon-home.png" alt="首頁"></a></li>
+      <li><a href="#" aria-label="選單"><img src="img/icon-menu.png" alt="選單"></a></li>
+    </ul>
+  </header>
+
+  <main>
+    <div class="content home">
+
+      <!-- 首頁橫幅 -->
+      <section class="hero" aria-label="首頁橫幅">
+        <button class="arrow arrow-prev" type="button" aria-label="上一張">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4 7 12l8 8" /></svg>
+        </button>
+
+        <figure class="hero-frame">
+          <img src="img/banner.png" alt="首頁橫幅插畫">
+        </figure>
+        <p class="hero-caption">大歡迎我的個人網站！</p>
+
+        <button class="arrow arrow-next" type="button" aria-label="下一張">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 4 8 8-8 8" /></svg>
+        </button>
+      </section>
+    </div>
+
+    <!-- 作品預覽 -->
+    <section class="works" aria-labelledby="works-title">
+      <h2 id="works-title">作品預覽(？)</h2>
+      <div class="works-track">
+        <a class="work work-side" href="works.html"><img src="img/work-1.png" alt="作品 1"></a>
+        <a class="work work-main" href="works.html"><img src="img/work-2.png" alt="作品 2"></a>
+        <a class="work work-side" href="works.html"><img src="img/work-3.png" alt="作品 3"></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+  </footer>
+
+</body>
+</html>
