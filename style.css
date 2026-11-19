@@ -1,0 +1,361 @@
+/* ===== 基本設定 ===== */
+:root {
+  --peach: #ffd0c2;      /* header / footer 底色 */
+  --blush: #f0e5e3;      /* main 底色 */
+  --white: #ffffff;
+  --bar-h: 142px;        /* header / footer 高度 */
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { height: 100%; }
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  color: var(--white);
+  background: var(--blush);
+}
+
+ul { list-style: none; }
+a  { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+/* ===== header ===== */
+.site-header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  height: var(--bar-h);
+  padding: 0 40px 0 220px;           /* 左側留給 logo */
+  background: var(--peach);
+  border-bottom: 1px solid rgba(255, 255, 255, .6);
+}
+
+.logo {
+  position: absolute;
+  top: 25px;
+  left: 29px;
+  width: 145px;
+  height: 145px;
+  border-radius: 50%;
+  background: var(--white);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.logo img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ===== nav ===== */
+.main-nav ul { display: flex; align-items: center; }
+.main-nav li + li { margin-left: 56px; }
+.main-nav a {
+  font-size: 32px;
+  letter-spacing: .02em;
+  white-space: nowrap;
+}
+.main-nav a:hover,
+.main-nav a:focus-visible { opacity: .75; }
+
+/* header 右側圖示 */
+.tools {
+  display: flex;
+  align-items: center;
+  gap: 62px;
+  margin-left: auto;
+}
+.tools img { width: 50px; height: 50px; object-fit: contain; }
+.tools a:hover,
+.tools a:focus-visible { opacity: .75; }
+
+/* ===== main ===== */
+main {
+  flex: 1;
+  padding: 58px 20px;
+  background: var(--blush);
+}
+
+/* 內容範圍：僅定義尺寸與置中，不顯示框線 */
+.content {
+  width: 66%;
+  max-width: 1266px;
+  min-height: 672px;
+  margin: 0 auto;
+}
+
+/* ===== footer ===== */
+.site-footer {
+  height: var(--bar-h);
+  background: var(--peach);
+  border-top: 1px solid rgba(255, 255, 255, .6);
+}
+
+/* ===== 響應式 ===== */
+@media (max-width: 1200px) {
+  .site-header { padding-left: 200px; }
+  .main-nav li + li { margin-left: 28px; }
+  .main-nav a { font-size: 24px; }
+  .tools { gap: 28px; }
+  .tools img { width: 40px; height: 40px; }
+  .content { width: 90%; }
+}
+
+@media (max-width: 768px) {
+  :root { --bar-h: 100px; }
+  .site-header { padding: 0 16px 0 130px; }
+  .logo { width: 100px; height: 100px; top: 16px; left: 16px; }
+  .main-nav { display: none; }          /* 手機改用選單圖示 */
+  .tools { gap: 18px; }
+  .tools img { width: 32px; height: 32px; }
+  .content { width: 100%; }
+}
+
+/* ===== 首頁 ===== */
+:root { --salmon: #f79c88; }
+
+main { padding: 58px 0 32px; color: var(--salmon); }
+.content.home { min-height: 0; }       /* 首頁內容高度由內容決定 */
+
+/* 橫幅 */
+.hero { position: relative; text-align: center; }
+
+/* 圖片本身已含白色外框，不另外加 border */
+.hero-frame img { width: 100%; height: auto; }
+
+.hero-caption {
+  margin-top: 26px;
+  font-size: 32px;
+  letter-spacing: .04em;
+}
+
+/* 左右箭頭（位於內容範圍外側） */
+.arrow {
+  position: absolute;
+  top: 45%;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: none;
+  color: #000;
+  cursor: pointer;
+}
+.arrow svg {
+  width: 32px;
+  height: 32px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 4;
+  stroke-linecap: square;
+}
+.arrow-prev { left: calc(-1 * (100vw - 100%) / 2 + 2vw); }
+.arrow-next { right: calc(-1 * (100vw - 100%) / 2 + 2vw); }
+.arrow:hover,
+.arrow:focus-visible { opacity: .6; }
+
+/* 作品預覽 */
+.works { margin-top: 56px; overflow: hidden; text-align: center; }
+
+.works h2 {
+  font-size: 48px;
+  font-weight: 400;
+  letter-spacing: .04em;
+}
+
+/* 左右兩張貼齊視窗邊緣，中間置中（圖片已含白框） */
+.works-track {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 36px;
+}
+
+.work { flex: none; display: block; }
+.work img { width: 100%; height: auto; }
+.work-1 { width: 25.47vw; }   /* 489px / 1920 */
+.work-2 { width: 41.88vw; }   /* 804px / 1920 */
+.work-3 { width: 23.54vw; }   /* 452px / 1920 */
+
+.work:hover,
+.work:focus-visible { opacity: .9; }
+
+/* ===== 首頁響應式 ===== */
+@media (max-width: 1200px) {
+  .hero-caption { font-size: 24px; }
+  .works h2 { font-size: 36px; }
+}
+
+@media (max-width: 768px) {
+  main { padding-top: 28px; }
+  .hero-caption { font-size: 18px; margin-top: 16px; }
+  .arrow { width: 40px; height: 40px; }
+  .arrow svg { width: 22px; height: 22px; }
+  .arrow-prev { left: 4px; }
+  .arrow-next { right: 4px; }
+  .works { margin-top: 32px; }
+  .works h2 { font-size: 26px; }
+  .works-track { margin-top: 20px; }
+}
+
+/* ===== 最新資訊頁（news.html） ===== */
+.page-news { padding-bottom: 95px; }
+.content.news-hero { min-height: 0; }
+
+/* 圖片本身已含框線，不另外加 border */
+.news-banner img { width: 100%; height: auto; }
+
+.news { width: 90.7%; margin: 0 auto; }
+
+.news h1 {
+  margin: 40px 0 70px 16px;
+  font-size: 48px;
+  font-weight: 400;
+  letter-spacing: .04em;
+  color: #ef9b84;
+}
+
+.news-list { display: grid; gap: 31px; }
+
+/* 左：日期（橘底）／右：標題（白底） */
+.news-item {
+  display: grid;
+  grid-template-columns: 347fr 1352fr;
+  column-gap: 2.24%;
+  height: 80px;
+}
+.news-date,
+.news-title {
+  display: flex;
+  align-items: center;
+  padding: 0 28px;
+  font-size: 28px;
+  letter-spacing: .04em;
+}
+.news-date  { background: var(--peach); color: var(--white); }
+.news-title { background: var(--white); color: var(--salmon); }
+
+.news-item:hover .news-title,
+.news-item:focus-visible .news-title { background: #fff7f5; }
+
+@media (max-width: 1200px) {
+  .news h1 { font-size: 36px; margin: 28px 0 40px 8px; }
+  .news-date, .news-title { font-size: 20px; padding: 0 16px; }
+  .news-item { height: 64px; }
+}
+
+@media (max-width: 768px) {
+  .page-news { padding-bottom: 48px; }
+  .news { width: 92%; }
+  .news h1 { font-size: 26px; margin: 20px 0 24px 0; }
+  .news-list { gap: 12px; }
+  .news-item { grid-template-columns: 34fr 66fr; column-gap: 8px; height: 52px; }
+  .news-date, .news-title { font-size: 14px; padding: 0 10px; letter-spacing: 0; }
+}
+
+/* ===== 作品頁（works.html） ===== */
+.content.works-hero { min-height: 0; }
+
+/* 圖片本身已含白框，不另外加 border */
+.works-banner img { width: 100%; height: auto; }
+
+.gallery {
+  display: grid;
+  gap: 20px;
+  width: 92.6%;
+  max-width: 1778px;
+  margin: 67px auto 0;
+}
+
+.gallery-row { display: grid; gap: 12px; }
+.gallery-row.cols-3 { grid-template-columns: repeat(3, 1fr); }   /* 直式 3 張 */
+.gallery-row.cols-2 { grid-template-columns: repeat(2, 1fr); }   /* 橫式 2 張 */
+
+.gallery-row img { width: 100%; height: auto; }
+
+@media (max-width: 768px) {
+  .gallery { width: 94%; margin-top: 32px; gap: 10px; }
+  .gallery-row { gap: 8px; }
+}
+
+@media (max-width: 520px) {
+  .gallery-row.cols-2 { grid-template-columns: 1fr; }
+}
+
+/* ===== 委託頁（commission.html） ===== */
+.page-commission { padding-bottom: 90px; }
+.content.commission-hero { min-height: 0; }
+
+/* 圖片本身已含白框，不另外加 border */
+.commission-banner img { width: 100%; height: auto; }
+
+/* 左圖｜中間文字｜右圖 */
+.commission {
+  display: grid;
+  grid-template-columns: 614fr 586fr 614fr;
+  align-items: start;
+  width: 94.5%;
+  max-width: 1814px;
+  margin: 57px auto 0;
+}
+.commission-img { width: 100%; height: auto; }
+
+.commission-info { text-align: center; color: #ef9b84; }
+.commission-info h1 {
+  font-size: clamp(22px, 2.92vw, 56px);
+  font-weight: 400;
+  letter-spacing: .02em;
+  line-height: 1.3;
+}
+.price-list {
+  margin-top: 2.2vw;
+  font-size: clamp(18px, 2.3vw, 44px);
+  line-height: 1.35;
+  letter-spacing: .04em;
+}
+
+@media (max-width: 768px) {
+  .page-commission { padding-bottom: 48px; }
+  .commission {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    width: 92%;
+    margin-top: 28px;
+  }
+  .commission-info { order: -1; margin-bottom: 8px; }
+  .commission-info h1 { font-size: 26px; }
+  .price-list { margin-top: 12px; font-size: 20px; }
+}
+
+/* ===== 關於我頁（about.html） ===== */
+.page-about { padding-bottom: 90px; }
+
+/* 左圖｜右文字 */
+.about {
+  display: flex;
+  align-items: flex-start;
+  gap: 8.5vw;
+  padding-left: 8.44vw;
+}
+
+/* 圖片本身已含白框，不另外加 border */
+.about-photo { flex: none; width: 35.7vw; max-width: 685px; }
+.about-photo img { width: 100%; height: auto; }
+
+.about-text {
+  padding-top: 2.9vw;
+  color: #000;
+  font-size: clamp(22px, 2.5vw, 48px);
+  line-height: 1.22;
+  letter-spacing: .02em;
+}
+
+@media (max-width: 768px) {
+  .page-about { padding-bottom: 48px; }
+  .about { flex-direction: column; align-items: center; gap: 20px; padding: 0 16px; }
+  .about-photo { width: 100%; max-width: 420px; }
+  .about-text { padding-top: 0; font-size: 22px; text-align: center; }
+}
